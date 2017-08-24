@@ -2,6 +2,10 @@ package com.amr.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -18,16 +22,19 @@ public class User implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(unique=true, nullable=false)
 	private int userId;
-
+	@NotNull
+	@NotEmpty(message="Please enter a Name")
 	@Column(length=45)
 	private String frstName;
-
+	@NotNull
 	@Column(length=45)
 	private String lastName;
-
+	@NotNull
 	@Column(length=45)
-	private String password;
+	@Pattern(regexp=".*([a-zA-Z0-9]{4}$)",message="Password should not contains special characters")
 
+	private String password;
+	@NotNull
 	@Column(length=45)
 	private String userName;
 

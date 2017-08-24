@@ -11,9 +11,9 @@
 <body>
 <h1>
 	
-	Welcome
+	
 	<div align="center">
-        <form:form action="addUser" method="POST" commandName="userF">
+        <form:form action="register" method="POST" modelAttribute="userRegisterationBean">
         <form:input path="userId" type="hidden" id="userId"/>
             <table border="0">
                 <tr>
@@ -22,6 +22,7 @@
                 <tr>
                     <td>First Name:</td>
                     <td><form:input path="frstName" /></td>
+                    <td><form:errors path="frstName" cssClass="error"></form:errors></td>
                 </tr>
                 <tr>
                     <td>Last Name:</td>
@@ -34,6 +35,8 @@
                 <tr>
                     <td>Password:</td>
                     <td><form:password path="password" /></td>
+					  <td><form:errors path="password" cssClass="error"></form:errors></td>
+                    
                 </tr>
                
                 
