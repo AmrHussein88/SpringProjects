@@ -49,22 +49,23 @@ public class UserController {
 
 	// This method will add a new user after filling the registration form
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String register(@Valid @ModelAttribute("userRegisterationBean") User userRegisterationBean, BindingResult result,Model model) {
+	public String register(@Valid @ModelAttribute("userRegisterationBean") User userRegisterationBean,
+			BindingResult result, Model model) {
 		if (result.hasErrors()) {
 			return "register";
 		} else
 			userService.addUser(userRegisterationBean);
-		model.addAttribute("userIndex",userRegisterationBean);
+		model.addAttribute("userIndex", userRegisterationBean);
 
 		return "index";
 	}
-	
-	//This method will edit be used when editing the profile
-	
-	@RequestMapping(value="/editProfile" , method = RequestMethod.GET)
-	public String editProfile (@ModelAttribute("userF") User user ,HttpServletRequest request, Model model){
-		//Remember searching for how to pass the user object from page to page
-		String uName=request.getParameter("userName");
+
+	// This method will edit be used when editing the profile
+
+	@RequestMapping(value = "/editProfile", method = RequestMethod.GET)
+	public String editProfile(@ModelAttribute("userF") User user, HttpServletRequest request, Model model) {
+		// Remember searching for how to pass the user object from page to page
+		String uName = request.getParameter("userName");
 		model.addAttribute(user);
 		return "editProfile";
 	}
