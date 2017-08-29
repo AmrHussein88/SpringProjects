@@ -60,7 +60,7 @@ public class UserController {
 		return "index";
 	}
 
-	// This method will edit be used when editing the profile
+	// This method will be used when editing the profile
 
 	@RequestMapping(value = "/editProfile", method = RequestMethod.GET)
 	public String editProfile(@ModelAttribute("userF") User user, HttpServletRequest request, Model model) {

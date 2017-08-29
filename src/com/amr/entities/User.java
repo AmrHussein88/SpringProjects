@@ -12,30 +12,31 @@ import org.hibernate.validator.constraints.NotEmpty;
  * The persistent class for the Users database table.
  * 
  */
-@Entity
-@Table(name="Users")
-@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
-public class User implements Serializable {
-	private static final long serialVersionUID = 1L;
+//This class contains both the annotation based hibernate (the commented lines) and also mapped to the .hbm.xml file to use xml hibernate example.
+//@Entity
+//@Table(name="Users")
+//@NamedQuery(name="User.findAll", query="SELECT u FROM User u")
+public class User /*implements Serializable*/ {
+//	private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.IDENTITY)
+//	@Column(unique=true, nullable=false)
 	private int userId;
-	@NotNull
-	@NotEmpty(message="Please enter a Name")
-	@Column(length=45)
+//	@NotNull
+//	@NotEmpty(message="Please enter a Name")
+//	@Column(length=45)
 	private String frstName;
-	@NotNull
-	@Column(length=45)
+//	@NotNull
+//	@Column(length=45)
 	private String lastName;
-	@NotNull
-	@Column(length=45)
-	@Pattern(regexp=".*([a-zA-Z0-9]{4}$)",message="Password should not contains special characters")
+//	@NotNull
+//	@Column(length=45)
+//	@Pattern(regexp=".*([a-zA-Z0-9]{4}$)",message="Password should not contains special characters")
 
 	private String password;
-	@NotNull
-	@Column(length=45)
+//	@NotNull
+//	@Column(length=45)
 	private String userName;
 
 	public User() {

@@ -31,8 +31,12 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		getSession().delete(user);
+	public void deleteUser(String userName) {
+		String hql = "Delete from User u where u.userName =:userName";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("userName", userName);
+		query.executeUpdate();
+
 
 	}
 
@@ -49,6 +53,15 @@ public class UserDaoImpl implements UserDao {
 		List<User> result = (List<User>) query.list();
 		return result;
 
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+		String hql= "Select u from User u";
+		Query query = getSession().createQuery(hql);
+		List<User> result = (List<User>) query.list();
+
+		return result;
 	}
 
 }

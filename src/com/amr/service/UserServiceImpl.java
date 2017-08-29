@@ -3,6 +3,8 @@ package com.amr.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,8 +24,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(User user) {
-		this.userDao.deleteUser(user);
+	public void deleteUser(String userName) {
+		this.userDao.deleteUser(userName);
 	}
 
 	@Override
@@ -36,6 +38,12 @@ public class UserServiceImpl implements UserService {
 
 		List<User> result = userDao.findUserByUserName(userName);
 		return result;
+	}
+
+	@Override
+	public List<User> findAllUsers() {
+	List<User> allUsersList=userDao.findAllUsers();
+	return allUsersList;
 	}
 
 }

@@ -30,6 +30,7 @@ public class HibernateConfiguration {
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.amr.entities" });
 		sessionFactory.setHibernateProperties(hibernateProperties());
+		sessionFactory.setMappingResources(new String[]{"/com/amr/entities/User.hbm.xml"});
 		return sessionFactory;
 	}
 
